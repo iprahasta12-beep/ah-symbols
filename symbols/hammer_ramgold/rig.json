@@ -1,0 +1,165 @@
+{
+  "name": "hammer_ramgold",
+  "psd": "../../psd/hammer_ramgold.psd",
+  "skip": [
+    "Background",
+    "ref*"
+  ],
+  "pivots": {
+    "handle": "bottom",
+    "head_base": "bottom",
+    "horn_l": "right",
+    "horn_r": "left"
+  },
+  "parents": {
+    "handle": "root",
+    "head_base": "handle",
+    "horn_l": "head_base",
+    "horn_r": "head_base",
+    "head_core": "head_base",
+    "gem_frame": "head_core",
+    "gem": "head_core"
+  },
+  "preset": "steel_hammer",
+  "roles": {
+    "swing": "handle",
+    "body": "head_base",
+    "spread": [
+      "horn_l",
+      "horn_r"
+    ],
+    "tint": [
+      "gem"
+    ],
+    "tint_rgb": "ffb070",
+    "tint_flash_rgb": "ff9a50",
+    "shine": "horn_l",
+    "gem": "gem",
+    "core": "head_core",
+    "horn_l": "horn_l",
+    "horn_r": "horn_r",
+    "orb_rgb": "ff9a30"
+  },
+  "fx": {
+    "shine": true,
+    "glow": true,
+    "glow_tint": "ffd27a",
+    "sparks": 4,
+    "spark_image": "star",
+    "spark_tint": "ffe08a",
+    "spark_scale": 0.45,
+    "twinkle": "gem",
+    "orb_glow": {
+      "layer": "gem",
+      "tint": "ff9a30",
+      "size": 3.0
+    },
+    "highlight": {
+      "layer": "gem_hl",
+      "on": "gem",
+      "width": 0.85,
+      "y": 0.22
+    },
+    "pops": [
+      {
+        "name": "pop_horn",
+        "layer": "horn_r",
+        "at": [
+          0.62,
+          0.6
+        ],
+        "above": "horn_r",
+        "scale": 0.6
+      }
+    ],
+    "emitters": [
+      {
+        "name": "huff_l",
+        "image": "huff_1",
+        "layer": "head_core",
+        "at": [
+          0.32,
+          0.88
+        ],
+        "angle": 200,
+        "anchor": [
+          0.985,
+          0.93
+        ],
+        "toward": [
+          0.284,
+          0.407
+        ],
+        "size": 240,
+        "tint": "ffffff",
+        "above": "gem"
+      },
+      {
+        "name": "huff_r",
+        "image": "huff_1",
+        "layer": "head_core",
+        "at": [
+          0.68,
+          0.88
+        ],
+        "angle": -20,
+        "anchor": [
+          0.985,
+          0.93
+        ],
+        "toward": [
+          0.284,
+          0.407
+        ],
+        "size": 240,
+        "tint": "ffffff",
+        "mirror": true,
+        "above": "gem"
+      },
+      {
+        "name": "puff_l",
+        "image": "huff_2",
+        "layer": "head_core",
+        "at": [
+          0.3,
+          0.9
+        ],
+        "angle": 195,
+        "anchor": [
+          0.997,
+          0.998
+        ],
+        "toward": [
+          0.364,
+          0.445
+        ],
+        "size": 330,
+        "tint": "ffffff",
+        "above": "gem"
+      },
+      {
+        "name": "puff_r",
+        "image": "huff_2",
+        "layer": "head_core",
+        "at": [
+          0.7,
+          0.9
+        ],
+        "angle": -15,
+        "anchor": [
+          0.997,
+          0.998
+        ],
+        "toward": [
+          0.364,
+          0.445
+        ],
+        "size": 330,
+        "tint": "ffffff",
+        "mirror": true,
+        "above": "gem"
+      }
+    ]
+  },
+  "idle": "ear_flick"
+}

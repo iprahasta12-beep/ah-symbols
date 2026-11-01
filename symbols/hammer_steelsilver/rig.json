@@ -1,0 +1,137 @@
+{
+  "name": "hammer_steelsilver",
+  "psd": "../../psd/hammer_steelsilver.psd",
+  "skip": [
+    "Background",
+    "ref*"
+  ],
+  "pivots": {
+    "handle": "bottom",
+    "head_core": "bottom",
+    "spike": "bottom",
+    "spike_back": "bottom"
+  },
+  "parents": {
+    "handle": "root",
+    "head_core": "handle",
+    "head_l": "head_core",
+    "head_r": "head_core",
+    "spike": "head_core",
+    "spike_back": "head_core"
+  },
+  "preset": "steel_hammer",
+  "roles": {
+    "swing": "handle",
+    "body": "head_core",
+    "spread": [
+      "head_l",
+      "head_r"
+    ],
+    "tint": [
+      "spike",
+      "spike_back"
+    ],
+    "shine": "head_core"
+  },
+  "fx": {
+    "shine": true,
+    "glow": true,
+    "glow_tint": "a8d4ff",
+    "sparks": 4,
+    "spark_image": "star",
+    "spark_scale": 0.45,
+    "twinkle": "spike",
+    "dark": [
+      "spike",
+      "spike_back"
+    ],
+    "emitters": [
+      {
+        "name": "steam_jet_l",
+        "image": "steam_jet",
+        "layer": "head_l",
+        "at": [
+          0.9,
+          0.55
+        ],
+        "parent": "head_core",
+        "angle": 150,
+        "anchor": [
+          0.5,
+          1.0
+        ],
+        "toward": [
+          0.5,
+          0.0
+        ],
+        "size": 380,
+        "tint": "ffffff",
+        "blend": "additive",
+        "above": "head_l"
+      },
+      {
+        "name": "steam_jet_r",
+        "image": "steam_jet",
+        "layer": "head_r",
+        "at": [
+          0.1,
+          0.55
+        ],
+        "parent": "head_core",
+        "angle": 30,
+        "anchor": [
+          0.5,
+          1.0
+        ],
+        "toward": [
+          0.5,
+          0.0
+        ],
+        "size": 380,
+        "tint": "ffffff",
+        "blend": "additive",
+        "above": "head_l"
+      },
+      {
+        "name": "steam_rise_1",
+        "image": "steam_puff_2",
+        "layer": "head_core",
+        "at": [
+          0.3,
+          0.12
+        ],
+        "angle": 100,
+        "size": 330,
+        "tint": "ffffff",
+        "above": "head_l"
+      },
+      {
+        "name": "steam_rise_2",
+        "image": "steam_scatter",
+        "layer": "head_core",
+        "at": [
+          0.7,
+          0.1
+        ],
+        "angle": 80,
+        "size": 400,
+        "tint": "ffffff",
+        "above": "head_l"
+      },
+      {
+        "name": "steam_rise_3",
+        "image": "steam_puff_1",
+        "layer": "head_core",
+        "at": [
+          0.5,
+          0.05
+        ],
+        "angle": 95,
+        "size": 300,
+        "tint": "ffffff",
+        "above": "head_l"
+      }
+    ]
+  },
+  "idle": "clamp_lock"
+}

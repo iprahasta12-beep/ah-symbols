@@ -1,0 +1,273 @@
+{
+  "name": "hammer_azuregold",
+  "psd": "../../psd/hammer_azuregold.psd",
+  "skip": [
+    "Background",
+    "ref*",
+    "base"
+  ],
+  "rename": {
+    "crown_1": "crown_mid",
+    "crown2": "crown_L",
+    "crown3": "crown_R",
+    "crown4": "crown_R2",
+    "crown_5": "crown_R3"
+  },
+  "pivots": {
+    "handle": "bottom",
+    "body_base": "bottom",
+    "spike": {
+      "f": [
+        0.5,
+        0.97
+      ]
+    }
+  },
+  "parents": {
+    "handle": "root",
+    "body_base": "handle",
+    "head_core": "body_base",
+    "cap_L": "body_base",
+    "cap_R": "body_base",
+    "gem": "head_core",
+    "crown_mid": "head_core",
+    "crown_L": "head_core",
+    "crown_R": "head_core",
+    "crown_R2": "head_core",
+    "crown_R3": "head_core"
+  },
+  "preset": "steel_hammer",
+  "idle": "azure_bolt",
+  "roles": {
+    "swing": "handle",
+    "body": "body_base",
+    "spread": [
+      "cap_L",
+      "cap_R"
+    ],
+    "tint": [
+      "gem"
+    ],
+    "tint_rgb": "9fc4ff",
+    "tint_flash_rgb": "8ab8ff",
+    "shine": "head_core",
+    "gem": "gem",
+    "crown_mid": "crown_mid",
+    "crown_sides": [
+      "crown_L",
+      "crown_R",
+      "crown_R2",
+      "crown_R3"
+    ],
+    "flash": [
+      "body_base",
+      "head_core",
+      "cap_L",
+      "cap_R",
+      "crown_mid",
+      "crown_L",
+      "crown_R",
+      "crown_R2",
+      "crown_R3"
+    ],
+    "stripes_out_in": []
+  },
+  "fx": {
+    "shine": true,
+    "glow": true,
+    "glow_tint": "5ab4ff",
+    "sparks": 4,
+    "spark_image": "star",
+    "spark_scale": 0.45,
+    "twinkle": "gem",
+    "dark": [
+      "gem",
+      "body_base",
+      "head_core",
+      "cap_L",
+      "cap_R",
+      "crown_mid",
+      "crown_L",
+      "crown_R",
+      "crown_R2",
+      "crown_R3"
+    ],
+    "emitters": [
+      {
+        "name": "strike",
+        "image": "bolt_thin",
+        "layer": "crown_mid",
+        "pos": [
+          747,
+          175
+        ],
+        "angle": 90,
+        "anchor": [
+          0.0,
+          0.5
+        ],
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "reach_y": 700,
+        "blend": "additive",
+        "above": "head_core"
+      },
+      {
+        "name": "crackle_L",
+        "image": "bolt_jag",
+        "layer": "cap_L",
+        "pos": [
+          518,
+          585
+        ],
+        "angle": 90,
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "size": 280,
+        "blend": "additive",
+        "above": "cap_L"
+      },
+      {
+        "name": "crackle_R",
+        "image": "bolt_jag",
+        "layer": "cap_R",
+        "pos": [
+          1112,
+          597
+        ],
+        "angle": 90,
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "size": 280,
+        "mirror": true,
+        "blend": "additive",
+        "above": "cap_R"
+      },
+      {
+        "name": "nova",
+        "image": "flare",
+        "layer": "gem",
+        "pos": [
+          836,
+          567
+        ],
+        "angle": 90,
+        "size": 480,
+        "blend": "additive",
+        "above": "head_core"
+      },
+      {
+        "name": "aura",
+        "image": "aura_head_01",
+        "alts": [
+          "aura_head_02"
+        ],
+        "layer": "head_core",
+        "parent": "body_base",
+        "pos": [
+          725,
+          474
+        ],
+        "angle": 0,
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "size_px": 1320,
+        "blend": "normal",
+        "below": "crown_R3"
+      },
+      {
+        "name": "mega_core",
+        "image": "bolt_jag",
+        "layer": "gem",
+        "parent": "body_base",
+        "pos": [
+          836,
+          567
+        ],
+        "angle": 0,
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "size": 1060,
+        "blend": "additive",
+        "above": "head_core"
+      },
+      {
+        "name": "crackle_surface",
+        "image": "crackle_surface",
+        "layer": "head_core",
+        "parent": "body_base",
+        "pos": [
+          728,
+          533
+        ],
+        "angle": 0,
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "size_px": 1274,
+        "blend": "additive",
+        "above": "head_core"
+      },
+      {
+        "name": "cap_end_L",
+        "image": "bolt_jag",
+        "layer": "cap_L",
+        "pos": [
+          175,
+          560
+        ],
+        "angle": 90,
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "size": 320,
+        "blend": "additive",
+        "above": "cap_R"
+      },
+      {
+        "name": "cap_end_R",
+        "image": "bolt_jag",
+        "layer": "cap_R",
+        "pos": [
+          1270,
+          570
+        ],
+        "angle": 90,
+        "toward": [
+          1.0,
+          0.5
+        ],
+        "size": 300,
+        "mirror": true,
+        "blend": "additive",
+        "above": "cap_R"
+      },
+      {
+        "name": "gem_spark",
+        "image": "star",
+        "layer": "gem",
+        "pos": [
+          836,
+          567
+        ],
+        "angle": 90,
+        "size": 200,
+        "blend": "additive",
+        "above": "head_core"
+      }
+    ],
+    "shine_count": 1
+  }
+}

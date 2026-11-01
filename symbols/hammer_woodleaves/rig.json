@@ -1,0 +1,53 @@
+{
+  "name": "hammer_woodleaves",
+  "psd": "../../psd/hammer_woodleaves.psd",
+  "skip": [
+    "Background",
+    "ref*"
+  ],
+  "pivots": {
+    "leaf": [
+      1090,
+      1110
+    ],
+    "vine": [
+      1080,
+      250
+    ],
+    "handle": "bottom",
+    "head": "bottom"
+  },
+  "parents": {
+    "handle": "root",
+    "head": "handle",
+    "vine": "head"
+  },
+  "preset": "steel_hammer",
+  "roles": {
+    "swing": "handle",
+    "body": "head",
+    "sway": "leaf_*",
+    "tint": [
+      "vine",
+      "leaf_head_1",
+      "leaf_head_2",
+      "leaf_handle_1",
+      "leaf_handle_2",
+      "leaf_handle_3",
+      "leaf_handle_4"
+    ],
+    "tint_rgb": "d8ff9a",
+    "tint_flash_rgb": "e8ffb0",
+    "shine": "head"
+  },
+  "fx": {
+    "shine": true,
+    "glow": true,
+    "glow_tint": "ffeca0",
+    "sparks": 4,
+    "spark_image": "star",
+    "spark_tint": "ffe9a8",
+    "spark_scale": 0.45,
+    "twinkle": "head"
+  }
+}

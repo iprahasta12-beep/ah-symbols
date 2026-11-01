@@ -1,0 +1,90 @@
+{
+  "name": "hammer_rubygold",
+  "psd": "../../psd/hammer_rubygold.psd",
+  "skip": [
+    "Background",
+    "ref*",
+    "gem_hl"
+  ],
+  "pivots": {
+    "handle": "bottom",
+    "head_core": "bottom"
+  },
+  "parents": {
+    "handle": "root",
+    "head_core": "handle",
+    "drum_l": "head_core",
+    "drum_r": "head_core",
+    "gem": "head_core",
+    "tip_l": "drum_l",
+    "spikes_top_l": "drum_l",
+    "spikes_bot_l": "drum_l",
+    "spikes_top_r": "drum_r",
+    "spikes_bot_r": "drum_r"
+  },
+  "preset": "steel_hammer",
+  "roles": {
+    "swing": "handle",
+    "body": "head_core",
+    "spread": [
+      "drum_l",
+      "drum_r"
+    ],
+    "tint": [
+      "gem"
+    ],
+    "tint_rgb": "ff8a8a",
+    "tint_flash_rgb": "ff7070",
+    "shine": "drum_l",
+    "bristle": [
+      "spikes_top_l",
+      "spikes_top_r",
+      "spikes_bot_l",
+      "spikes_bot_r"
+    ],
+    "jab": "tip_l",
+    "jab_drum": "drum_l",
+    "gem": "gem",
+    "orb_rgb": "ff3030",
+    "breathe_l": "drum_l",
+    "breathe_r": "drum_r"
+  },
+  "fx": {
+    "shine": true,
+    "glow": true,
+    "glow_tint": "ffd27a",
+    "sparks": 4,
+    "spark_image": "star",
+    "spark_tint": "ffe08a",
+    "spark_scale": 0.45,
+    "twinkle": "gem",
+    "dark": [
+      "gem"
+    ],
+    "orb_glow": {
+      "layer": "gem",
+      "tint": "ff3030",
+      "size": 3.0
+    },
+    "pops": [
+      {
+        "name": "pop_tip",
+        "layer": "tip_l",
+        "at": "left",
+        "above": "tip_l",
+        "scale": 0.6
+      }
+    ],
+    "highlight": {
+      "layer": "gem_hl",
+      "on": "gem",
+      "width": 0.85,
+      "y": 0.22
+    }
+  },
+  "idle": "bristle_jab",
+  "rename": {
+    "spike_bottom_l": "spikes_bot_l",
+    "spike_bottom_l copy": "spikes_bot_r"
+  }
+}

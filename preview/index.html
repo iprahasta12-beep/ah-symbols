@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Symbols Preview</title>
+<style>
+  :root { --bg:#14161b; --panel:#1b1e25; --line:#2c3039; --fg:#e9eaee; --dim:#8d93a0; --acc:#4ea1ff; --gold:#ffcf4a; --cell:#22262f; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--fg); font:13px/1.4 system-ui, -apple-system, Segoe UI, sans-serif; overflow:hidden; }
+  #app { display:grid; grid-template-columns:232px 1fr 232px; height:100%; }
+  aside { background:var(--panel); border-color:var(--line); border-style:solid; border-width:0; overflow-y:auto; padding:14px 12px; display:flex; flex-direction:column; gap:14px; }
+  #left { border-right-width:1px; } #right { border-left-width:1px; }
+  h1 { margin:0; font-size:14px; letter-spacing:.02em; }
+  h1 small { display:block; color:var(--dim); font-weight:400; font-size:11px; margin-top:2px; }
+  .grp { display:flex; flex-direction:column; gap:6px; }
+  .lbl { color:var(--dim); font-size:11px; text-transform:uppercase; letter-spacing:.08em; font-weight:600; display:flex; justify-content:space-between; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  button.b, label.b { border:1px solid var(--line); background:#262a33; color:var(--fg); padding:7px 10px; border-radius:6px; cursor:pointer; font:inherit; text-align:center; white-space:nowrap; }
+  button.b:hover, label.b:hover { border-color:var(--acc); }
+  button.b.on { border-color:var(--acc); color:var(--acc); background:#4ea1ff14; }
+  input[type=file] { display:none; }
+  .sym { display:flex; align-items:center; gap:10px; padding:6px; border-radius:8px; cursor:pointer; border:1px solid transparent; }
+  .sym:hover { background:#262a33; } .sym.on { border-color:var(--acc); background:#4ea1ff14; }
+  .sym img { width:48px; height:48px; object-fit:contain; background:#0005; border-radius:6px; flex:none; }
+  .sym b { display:block; font-weight:600; } .sym span { color:var(--dim); font-size:11px; }
+  #stageWrap { display:flex; flex-direction:column; min-width:0; min-height:0; }
+  #stage { position:relative; flex:1; min-height:0; }
+  .tools { position:absolute; top:10px; left:10px; display:flex; gap:6px; z-index:2; }
+  .tools .b { padding:4px 9px; font-size:12px; background:#1b1e25e0; }
+  #badge { position:absolute; top:10px; right:10px; z-index:2; background:#1b1e25e0; border:1px solid var(--line); border-radius:6px; padding:4px 9px; font-size:12px; font-variant-numeric:tabular-nums; }
+  #badge.paused { color:var(--gold); border-color:var(--gold); }
+  .transport { border-top:1px solid var(--line); background:var(--panel); padding:10px 14px; display:flex; flex-direction:column; gap:8px; }
+  .trow { display:flex; align-items:center; gap:8px; }
+  .tb { width:38px; padding:7px 0 !important; }
+  #play { width:96px; font-weight:700; background:var(--acc) !important; color:#fff !important; border-color:var(--acc) !important; }
+  #play.paused { background:var(--gold) !important; border-color:var(--gold) !important; color:#3a2a00 !important; }
+  input[type=range] { accent-color:var(--acc); flex:1; margin:0; }
+  #time { min-width:96px; text-align:right; color:var(--dim); font-variant-numeric:tabular-nums; }
+  #ticks { position:relative; height:7px; margin:0 8px 0 150px; }
+  #ticks i { position:absolute; width:5px; height:5px; margin-left:-2.5px; transform:rotate(45deg); background:#4a5060; }
+  .spd { color:var(--dim); font-size:12px; }
+  .spd input { max-width:220px; }
+  .spd b { color:var(--fg); min-width:44px; font-weight:600; font-variant-numeric:tabular-nums; }
+  .chips { display:flex; gap:4px; }
+  .chips button { border:1px solid var(--line); background:transparent; color:var(--dim); border-radius:999px; padding:2px 9px; font:inherit; font-size:11px; cursor:pointer; }
+  .chips button:hover, .chips button.on { color:var(--fg); border-color:var(--acc); }
+  .st { border:1px solid var(--line); border-radius:8px; padding:8px 10px; cursor:pointer; background:#262a33; display:flex; justify-content:space-between; align-items:center; }
+  .st:hover { border-color:var(--acc); } .st.on { border-color:var(--acc); background:#4ea1ff14; }
+  .st em { font-style:normal; color:var(--dim); font-size:11px; font-variant-numeric:tabular-nums; }
+  .st small { color:var(--dim); font-size:10px; border:1px solid var(--line); border-radius:4px; padding:0 4px; margin-left:4px; }
+  .st kbd { font:10px ui-monospace,monospace; color:var(--dim); border:1px solid var(--line); border-radius:4px; padding:0 4px; margin-right:6px; }
+  .opt { display:flex; align-items:center; gap:8px; cursor:pointer; } .opt input { accent-color:var(--acc); }
+  .keys { color:var(--dim); font-size:11px; line-height:1.7; }
+  .keys b { color:var(--fg); font-weight:600; background:#0005; border:1px solid var(--line); border-radius:4px; padding:0 4px; }
+  #info { color:var(--dim); font-size:11px; line-height:1.5; }
+  #toast { position:fixed; left:50%; bottom:110px; transform:translateX(-50%); background:#000c; padding:8px 14px; border-radius:8px; display:none; z-index:6; }
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="left">
+    <h1>Symbols Preview <small>Spine 4.2 · Pixi v8 · offline</small></h1>
+    <div class="grp"><div class="lbl">Symbols <span id="count"></span></div><div id="syms"></div></div>
+    <div class="grp">
+      <div class="lbl">Files</div>
+      <label class="b" title="Pick slot-symbols root or one symbols/<name> folder">Load folder<input id="dir" type="file" webkitdirectory multiple></label>
+      <button class="b" id="bake" title="Download data.js so double-click opens with current files">Bake data.js</button>
+    </div>
+    <div id="info"></div>
+  </aside>
+
+  <div id="stageWrap">
+    <div id="stage">
+      <div class="tools">
+        <button class="b" id="bg">BG</button>
+        <button class="b on" id="cell">Reel cell</button>
+        <button class="b" id="dbg" title="D">Debug</button>
+        <button class="b" id="fit">Fit</button>
+      </div>
+      <div id="badge">—</div>
+    </div>
+    <div class="transport">
+      <div id="ticks"></div>
+      <div class="trow">
+        <button class="b tb" id="restart" title="Restart (R)">⏮</button>
+        <button class="b tb" id="prev" title="Prev frame (←)">◀</button>
+        <button class="b" id="play" title="Space">❚❚ Pause</button>
+        <button class="b tb" id="next" title="Next frame (→)">▶</button>
+        <input id="scrub" type="range" min="0" max="1000" value="0">
+        <span id="time">0.00 / 0.00s</span>
+      </div>
+      <div class="trow spd">
+        Speed <input id="speed" type="range" min="0.05" max="2" step="0.05" value="1"><b id="speedV">1.00x</b>
+        <div class="chips" id="chips"><button data-s="0.1">0.1x</button><button data-s="0.25">0.25x</button><button data-s="0.5">0.5x</button><button data-s="1" class="on">1x</button><button data-s="2">2x</button></div>
+      </div>
+    </div>
+  </div>
+
+  <aside id="right">
+    <div class="grp"><div class="lbl">States</div><div class="grp" id="states"></div></div>
+    <div class="grp">
+      <label class="opt"><input type="checkbox" id="loop" checked> Loop state</label>
+      <button class="b" id="seqLand">Reel sim: land → idle</button>
+      <button class="b" id="seqWin">Win sim: land → win ×2 → idle</button>
+      <button class="b" id="setup">Setup pose</button>
+    </div>
+    <div class="keys"><b>Space</b> pause · <b>←</b><b>→</b> frame · <b>R</b> restart<br><b>[</b><b>]</b> speed · <b>1-9</b> state · <b>↑</b><b>↓</b> symbol · <b>D</b> debug</div>
+  </aside>
+</div>
+<div id="toast"></div>
+<script src="libs/pixi.min.js"></script>
+<script src="libs/spine-pixi-v8-4.2.min.js"></script>
+<script src="data.js"></script>
+<script src="preview.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+hammer_woodleaves.png
+size:2048,1024
+filter:Linear,Linear
+glow
+bounds:262,633,256,256
+handle
+bounds:0,0,318,631
+head
+bounds:518,0,837,442
+leaf
+bounds:0,633,260,257
+shine
+bounds:320,0,196,470
+star
+bounds:1694,0,254,320
+vine
+bounds:1357,0,335,372
